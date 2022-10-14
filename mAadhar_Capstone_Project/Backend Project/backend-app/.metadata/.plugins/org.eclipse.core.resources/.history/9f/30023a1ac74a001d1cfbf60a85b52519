@@ -1,0 +1,52 @@
+package com.mAadhar.bean;
+
+public class Aadhar {
+	private String name;
+	private String dob;
+	private String address;
+	private String emailid;
+	private String mobileNo;
+	private String gender;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getDob() {
+		return dob;
+	}
+	public void setDob(String dob) {
+		this.dob = dob;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getEmailid() {
+		return emailid;
+	}
+	public void setEmailid(String emailid) {
+		this.emailid = emailid;
+	}
+	public String getMobileNo() {
+		return mobileNo;
+	}
+	public void setMobileNo(String mobileNo) {
+		this.mobileNo = mobileNo;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	@Override
+	public String toString() {
+		return "Aadhar [name=" + name + ", dob=" + dob + ", address=" + address + ", emailid=" + emailid + ", mobileNo="
+				+ mobileNo + ", gender=" + gender + "]";
+	}
+	
+}

@@ -1,0 +1,19 @@
+package com.mAadhar.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.mAadhar.bean.Aadhar;
+import com.mAadhar.repository.AadharRepository;
+
+@Service
+public class AadharService {
+	
+	@Autowired
+	AadharRepository aadharRepo;
+	
+	public String newAadhar(Aadhar aadhar) {
+		aadharRepo.save(aadhar);
+		return "New Aadhar request has been sent";
+	}
+}

@@ -1,0 +1,19 @@
+<div class="container">
+    <h2>Welcome to home page user {{user}}</h2>
+    <a routerLink="newAadhar">Apply for New Aadhar</a> |
+    <a routerLink="findAadharById">View Your Aadhar</a>
+
+    <br/>
+    <div class="button">
+        <br/>
+        <input type="button" value="logout" (click)="logout()"/>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+        <router-outlet></router-outlet>
+    <br/>
+    <br/>
+    <br/>
+    
+</div>

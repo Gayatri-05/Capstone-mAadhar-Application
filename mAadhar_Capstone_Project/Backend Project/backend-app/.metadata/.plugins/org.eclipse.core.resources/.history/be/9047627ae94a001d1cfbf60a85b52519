@@ -1,0 +1,73 @@
+package com.mAadhar.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.mAadhar.bean.Aadhar;
+import com.mAadhar.repository.AadharRepository;
+
+@Service
+public class AadharService {
+	
+	@Autowired
+	AadharRepository aadharRepo;
+	
+	public String newAadhar(Aadhar aadhar) {
+		aadharRepo.save(aadhar);
+		return "New Aadhar request has been sent";
+	}
+	
+	public List<Aadhar> getAllAadhar() {
+		return aadharRepo.findAll();
+	}
+	
+	public String findAadharById(int applicationId) {
+		Optional<Aadhar> result  = aadharRepo.findById(applicationId);
+		if(result.isPresent()) {
+			Aadhar a = result.get();
+			return a.toString();
+		}else {
+			return "Aadhar Id invalid";
+		}
+	}
+	
+	public String updateAadhar(Aadhar aadhar) {
+		Optional<Aadhar> result  = aadharRepo.findById(aadhar.getApplicationId());
+		if(result.isPresent()) {
+			Aadhar a = result.get();
+			a.setAddress(aadhar.getAddress());
+			a.setDob(aadhar.getDob());
+			a.setMobileNo(aadhar.getMobileNo());
+			aadharRepo.saveAndFlush(a);
+			return "Aadhar updated successfully";
+		}else {
+			return "Aadhar Id invalid";
+		}
+	}
+	
+	public String deleteAadhar(int applicationId) {
+		Optional<Aadhar> result  = aadharRepo.findById(applicationId);
+		if(result.isPresent()) {
+			Aadhar a = result.get();
+			aadharRepo.delete(a);
+			return "Aadhar deleted successfully";
+		}else {
+			return "Aadhar Id invalid";
+		}
+	}
+	
+	public String duplicateAadhar(Aadhar aadhar) {
+		Optional<Aadhar> result  = aadharRepo.findById(aadhar.getApplicationId());
+		if(result.isPresent()) {
+			Aadhar a = result.get();
+			a.setApplicationId(aadhar.getApplicationId());
+			aadharRepo.saveAndFlush(a);
+			return "Aadhar updated successfully";
+		}else {
+			return "Aadhar Id invalid";
+		}
+	}
+}

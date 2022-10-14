@@ -1,0 +1,25 @@
+<div>
+    <h2 style="color:chocolate;">Aadhar Details</h2>
+    <div class="container" *ngIf="flag">
+        <h2 style="color:chocolate;">Update Aadhar</h2>
+        <form (ngSubmit)="updateDataFromDb()">
+            <label>Application Id</label>
+            <input type="number" name="applicationid" [(ngModel)]="applicationid" readonly/><br/>
+            <label>Address</label>
+            <input type="text" name="address" [(ngModel)]="address" /><br/>
+            <label>DOB</label>
+            <input type="text" name="dob" [(ngModel)]="dob"/><br/>
+            <label>Mobile No</label>
+            <input type="text" name="mobileno" [(ngModel)]="mobileno"/><br/>
+            <input type="submit" value="update"/>
+            <input type="reset" value="reset"/>
+        </form>
+    </div>
+    <span style="color:crimson;font-size: 20px;" *ngFor="let a of aadhars ">
+        {{a.applicationid}} | {{a.name}} | {{a.emailid}} | {{a.dob}} | {{a.address}} | {{a.mobileno}}
+        
+        <input type="button" value="delete" (click)="deleteAadhar(a.applicationid)"/>
+        <input type="button" value="update" (click)="updateAadhar(a)"/>
+        <br/>
+    </span>
+</div>

@@ -1,0 +1,44 @@
+package com.mAadhar.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.mAadhar.bean.Aadhar;
+import com.mAadhar.repository.AadharRepository;
+
+@Service
+public class AadharService {
+	
+	@Autowired
+	AadharRepository aadharRepo;
+	
+	public String newAadhar(Aadhar aadhar) {
+		aadharRepo.save(aadhar);
+		return "New Aadhar request has been sent";
+	}
+	
+	public String findAadharById(String emailid) {
+		Optional<Aadhar> result  = aadharRepo.findById(emailid);
+		if(result.isPresent()) {
+			Aadhar a = result.get();
+			return a.toString();
+		}else {
+			return "Aadhar Id invalid";
+		}
+	}
+	
+	public String updateAadhar(Aadhar aadhar) {
+		Optional<Aadhar> result  = aadharRepo.findById(aadhar.getEmailid());
+		if(result.isPresent()) {
+			Product p = result.get();
+			p.setPrice(product.getPrice());
+			p.setUrl(product.getUrl());
+			productRepository.saveAndFlush(p);
+			return "Product updated successfully";
+		}else {
+			return "Product not present";
+		}
+	}
+}
